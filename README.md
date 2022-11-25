@@ -1,70 +1,48 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+02-simple-spa
+#01. 프로젝트 생성 및 초기화
+1) 프로젝트 생성
+프로젝트 이름은 영어 소문자만 사용 가능함.
+yarn create react-app 02-simple-spa
+2) 프로젝트 생성 후 기초작업
+프로젝트 초기화
+대상 작업 내용
+src폴더 App.css, App.test.js, index.css, logo.svg, setupTests.js, reportWebVitals.js 삭제
+App.js App.css와 logo.svg에 대한 참조(import) 구문 제거
+index.js
+index.css와 reportWebVitals.js에 대한 참조(import) 구문 제거
+맨 마지막 행에 있는 reportWebVitals() 부분 삭제
+3) 추가 패키지 설치
+패키지 이름 설명
+react-router-dom
+SPA앱을 만들 때 사용.
+URL에 따라 실행할 Javascript를 분기한다.
+yarn add react-router-dom
+4) Router 적용
+index.js
+import 구문 추가
+import { BrowserRouter } from 'react-router-dom';
+index.js 파일에서 <React.StrictMode><App /></React.StrictMode>을 <BrowserRouter><App />
+</BrowserRouter>로 변경
+README.md
+2 / 2
+App.js
+import { Link, Routes, Route } from "react-router-dom";
+5) 프로젝트 실행
+프로젝트를 VSCode로 열고, Ctrl + ~를 눌러 터미널 실행
+yarn start
+#02. Single Page Application (=SPA)
+하나의 HTML 페이지로 다수의 페이지 효과를 내는 구현 방식.
+js 파일로 웹 페이지 화면을 변경하는 형태로 구현된다.
+1) Router
+분배하는 기능을 수행하는 소프트웨어나 하드웨어
+대표적인 라우터로는 아이피공유기가 있다.
+React의 Router는 URL에 의해 컴포넌트를 분배하는 기능을 한다.
+HTML5에서 Javascript에 추가된 기능중 history객체를 통해 URL을 변조하는 기능이 있다.
+리액트의 Router는 이 기능을 활용하여 현재 페이지의 URL을 다양하게 변조하여 거기에 각각의 컴포넌트를 분
+배한다.
+2) SPA개발의 장점
+페이지 이동 없이 JS에 의해 화면이 갱신되므로 실제로 네트워크 통신이 발생하지 않아 실행 속도가 빠르다.
+3) SPA개발의 단점
+JS코드가 비대해 질 수 있다. 코드 스플리팅 기법으로 해결가능(코드 분할 작성)
+하나의 HTML이므로 SEO에 취약하다 (서버사이드 렌더링으로 해결 가능)
+서버사이드 랜더링 = React + Node / React + PHP / React + Java(Spring)
